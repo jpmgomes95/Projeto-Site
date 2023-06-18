@@ -1,0 +1,150 @@
+<!doctype html>
+<html data-bs-theme="dark">
+<head>
+<meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<link rel="icon" href="../img/ico.png" type="image/png">
+<title>Site Oficial - Telecall - Internet, Telefonia, Celular e muito mais</title>
+</head>
+<body>
+<link rel="stylesheet" href="../css/cadastro.css" />
+<nav class="navbar navbar-expand-lg bg-body-tertiary" class="navbar bg-dark" data-bs-theme="dark">
+<div class="container-fluid">
+  <a href="index.html"><img src="../img/logo.png" widht="50px" height="50px"></a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Internet
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Internet Dedicada</a></li>
+            <li><a class="dropdown-item" href="#">Banda Larga</a></li>
+            <li><a class="dropdown-item" href="#">Wi-Fi</a></li>
+          </ul>
+      </li>
+		<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Mobilidade
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Celular empresarial</a></li>
+            <li><a class="dropdown-item" href="#">MVNA/E</a></li>
+          </ul>
+      </li>
+      <div>
+	  <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            CPaaS
+            
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://modavo.com.br/produtos/twofa/">2FA</a></li>
+            <li><a class="dropdown-item" href="https://modavo.com.br/produtos/numero-mascara/">Número Máscara</a></li>
+            <li><a class="dropdown-item" href="https://modavo.com.br/produtos/campanha/">SMS Programável</a></li>
+            <li><a class="dropdown-item" href="https://modavo.com.br/produtos/consulta-numero/">Google Verified Calls</a></li>
+          </ul>
+      </li>
+      </li>
+      </ul>
+      <input type="checkbox" class="checkbox" id="chk" />
+      <label class="label" for="chk">
+      <i class="fas fa-moon"></i>
+      <i class="fas fa-sun"></i>
+      <div class="ball"></div>
+      </label>
+      <a href="login.html" id="areaClienteBtn"><button class="btn btn-outline-success" type="submit">Área do Cliente</button></a>
+</nav>
+<br>
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Formulário de Cadastro</h5>
+      <form id="cadastroForm">
+        <div class="mb-3">
+          <label for="nome" class="form-label">Nome</label>
+          <input type="text" class="form-control" id="nome" name="nome" minlength="15" maxlength="60" required>
+          <div class="error-msg" style="color:red" id="nome-error"></div>
+        <div class="mb-3">
+          <label for="dataNascimento" class="form-label">Data de Nascimento</label>
+          <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" required>
+        </div>
+        <div class="mb-3">
+          <label for="sexo" class="form-label">Sexo</label>
+          <select class="form-control" id="sexo" name="sexo" required>
+            <option value="">Selecione</option>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+            <option value="X">Prefiro não dizer</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="nomeMaterno" class="form-label">Nome Materno</label>
+          <input type="text" class="form-control" id="nomeMaterno" name="nomeMaterno" minlength="15" maxlength="60" required>
+          <div class="error-msg" style="color:red" id="nome-error2"></div>
+        </div>
+        <div class="mb-3">
+          <label for="CPF" class="form-label">CPF</label>
+          <input type="text" maxlength="14" autocomplete="off" class="form-control" id="CPF" name="CPF" oninput="ajustaCpf(this)" onblur="validarCPF(this)" required>
+          <div class="error-msg" style="color: red;" id="cpf-error"></div>
+        </div>
+        <div class="mb-3">
+          <label for="telefoneCelular" class="form-label">Telefone Celular</label>
+          <input type="cel" class="form-control" id="telefoneCelular" name="telefoneCelular" required>
+        </div>
+        <div class="mb-3">
+          <label for="telefoneFixo" class="form-label">Telefone Fixo</label>
+          <input type="tel" class="form-control" id="telefoneFixo" name="telefoneFixo" required>
+        </div>
+        <div class="mb-3">
+          <label for="cep" class="form-label">CEP</label>
+          <input type="text" class="form-control" id="cep" name="cep" required>
+        </div>
+        <div class="mb-3">
+          <label for="endereco" class="form-label">Endereço</label>
+          <input type="text" class="form-control" id="endereco" name="endereco" required readonly>
+        </div>
+        <div class="mb-3">
+          <label for="numero" class="form-label">Número</label>
+          <input type="text" class="form-control" id="numero" name="numero" required>
+        </div>
+        <div class="mb-3">
+          <label for="complemento" class="form-label">Complemento</label>
+          <input type="text" class="form-control" id="complemento" name="complemento"required>
+        </div>
+        <div class="mb-3">
+          <label for="login" class="form-label">Login</label>
+          <input type="text" class="form-control" id="login" name="login" minlength="6" maxlength="6" required>
+          <div class="error-msg" style="color: red;" id="login-error"></div>
+        </div>
+        <div class="mb-3">
+          <label for="senha" class="form-label">Senha</label>
+          <input type="password" class="form-control" id="senha" name="senha" minlength="8" maxlength="8" required>
+          <div class="error-msg" style="color: red;" id="senha-error"></div>
+        </div>
+        <div class="mb-3">
+          <label for="confirmarSenha" class="form-label">Confirmar Senha</label>
+          <input type="password" class="form-control" id="confirmarSenha" name="confirmarSenha" minlength="8" maxlength="8" required>
+          <div id="erroSenha" style="color: red;"></div>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <div id="mensagemSucesso" class="alert alert-success mt-3" style="display: none;">
+          Cadastro efetuado com sucesso.
+      </form>
+    </div>
+  </div>
+</div>
+<footer class="bg-dark text-white text-center p-3">
+  &copy; 2023 Telecall - Todos os direitos reservados
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/imask"></script>
+</body>
+	<script src="../js/index.js"></script>
+  <script src="../js/cadastro.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/998c60ef77.js" crossorigin="anonymous"></script>
+</html>
